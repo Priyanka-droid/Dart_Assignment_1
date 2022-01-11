@@ -5,7 +5,12 @@ class Item {
   var itemName, itemPrice, itemType, itemQuantity;
   var taxAmount, totalPrice;
 
-  Item(this.itemName, this.itemType, {this.itemPrice, this.itemQuantity});
+  Item(itemName, itemType, {itemPrice, itemQuantity}) {
+    this.itemName = itemName;
+    this.itemType = itemType;
+    this.itemPrice = int.parse(itemPrice);
+    this.itemQuantity = itemQuantity;
+  }
 
   // calculating tax for item based on it's type
   void calculateTax() {
