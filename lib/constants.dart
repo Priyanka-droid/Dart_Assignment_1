@@ -6,13 +6,3 @@ class Constants {
   static const double SURCHARGE_UPTO_200 = 10;
   static const double SURCHARGE_AFTER_200 = 0.05;
 }
-
-
-// class Constants {
-//   static final Constants _instance = Constants._();
-
-//   Constants._();
-
-//   static Constants get instance => _instance;
-//   static const double RAW_FACTOR = 0.125;
-// }
