@@ -1,7 +1,9 @@
 import 'item.dart';
 import 'dart:io';
 
+// use this class to take input and print output
 class Utility {
+  // taking input of item and returning the item
   static Item inputItems() {
     print("Enter item name");
     String itemName = stdin.readLineSync()!;
@@ -21,6 +23,7 @@ class Utility {
     return newItem;
   }
 
+  // print the items details in the item list
   static void outputItems(List<Item> itemList) {
     itemList.asMap().forEach((itemNumber, item) {
       print("The details of item $itemNumber \n" +

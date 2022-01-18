@@ -36,6 +36,7 @@ class Item {
     totalPrice = itemPrice + taxAmount;
   }
 
+  // calculating surcharge for imported items
   double _calculateSurcharge() {
     double surCharge;
     if (itemPrice + taxAmount <= 100) {
