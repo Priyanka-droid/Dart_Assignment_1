@@ -1,15 +1,19 @@
 import 'package:dart_application_1/constants.dart';
-import 'InputOutputItemsUtility.dart';
+
+enum ItemTypes { raw, manufactured, imported }
 
 class Item {
-  String itemName;
-  ItemTypes itemType;
-  double itemPrice;
-  double itemQuantity;
-  double taxAmount = 0, totalPrice = 0;
+  final String itemName;
+  final ItemTypes itemType;
+  final double itemPrice;
+  final double itemQuantity;
+  late double taxAmount, totalPrice;
 
-  Item(this.itemName, this.itemType,
-      {this.itemPrice = 0, this.itemQuantity = 0});
+  Item(
+      {required this.itemName,
+      required this.itemType,
+      this.itemPrice = 0,
+      this.itemQuantity = 0});
 
   // calculating tax for item based on it's type
   void calculateTax() {
@@ -41,11 +45,5 @@ class Item {
     } else {
       return Constants.SURCHARGE_AFTER_200 * (itemPrice + taxAmount);
     }
-  }
-
-  // printing details of item
-  void printCalculatedItemDetails() {
-    print("itemName : $itemName :: itemPrice : $itemPrice :: " +
-        "taxAmount : $taxAmount :: totalPrice : $totalPrice");
   }
 }

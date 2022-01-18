@@ -1,5 +1,5 @@
-import 'InputOutputItemsUtility.dart';
+import 'items_app.dart';
 
 void main() {
-  InputOutputItemsUtility.inputItems();
+  ItemsApp.startApp();
 }
