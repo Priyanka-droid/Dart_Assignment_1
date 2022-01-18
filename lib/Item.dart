@@ -1,47 +1,45 @@
-import 'package:dart_application_1/InputItemsUtility.dart';
 import 'package:dart_application_1/constants.dart';
-import 'InputItemsUtility.dart';
+import 'InputOutputItemsUtility.dart';
 
 class Item {
-  String? itemName;
-  ItemTypes? itemType;
-  double? itemPrice;
-  double? itemQuantity;
-  double? taxAmount, totalPrice;
+  String itemName;
+  ItemTypes itemType;
+  double itemPrice;
+  double itemQuantity;
+  double taxAmount = 0, totalPrice = 0;
 
-  Item(this.itemName, this.itemType, {this.itemPrice, this.itemQuantity});
+  Item(this.itemName, this.itemType,
+      {this.itemPrice = 0, this.itemQuantity = 0});
 
   // calculating tax for item based on it's type
-  double? calculateTax() {
+  void calculateTax() {
     switch (itemType) {
       case ItemTypes.raw:
-        taxAmount = Constants.BASE_TAX * (itemPrice ?? 0);
+        taxAmount = Constants.BASE_TAX * itemPrice;
         break;
       case ItemTypes.manufactured:
-        taxAmount = Constants.BASE_TAX * (itemPrice ?? 0) +
-            Constants.ADDITIONAL_TAX *
-                ((itemPrice ?? 0) + Constants.BASE_TAX * (itemPrice ?? 0));
+        taxAmount = Constants.BASE_TAX * itemPrice +
+            Constants.ADDITIONAL_TAX * itemPrice +
+            Constants.BASE_TAX * itemPrice;
         break;
       case ItemTypes.imported:
-        taxAmount = Constants.IMPORT_DUTY * (itemPrice ?? 0);
-        taxAmount = (taxAmount ?? 0) + (_calculateSurcharge() ?? 0);
+        taxAmount = Constants.IMPORT_DUTY * itemPrice;
+        taxAmount = taxAmount + _calculateSurcharge();
         break;
       default:
         print("enter a valid type");
     }
-    totalPrice = (itemPrice ?? 0) + (taxAmount ?? 0);
+    totalPrice = itemPrice + taxAmount;
   }
 
-  double? _calculateSurcharge() {
+  double _calculateSurcharge() {
     double surCharge;
-    if ((itemPrice ?? 0) + (taxAmount ?? 0) <= 100) {
+    if (itemPrice + taxAmount <= 100) {
       return Constants.SURCHARGE_UPTO_100;
-    } else if ((itemPrice ?? 0) + (taxAmount ?? 0) > 100 &&
-        (itemPrice ?? 0) + (taxAmount ?? 0) <= 200) {
+    } else if (itemPrice + taxAmount > 100 && itemPrice + taxAmount <= 200) {
       return Constants.SURCHARGE_UPTO_200;
     } else {
-      return Constants.SURCHARGE_AFTER_200 *
-          ((itemPrice ?? 0) + (taxAmount ?? 0));
+      return Constants.SURCHARGE_AFTER_200 * (itemPrice + taxAmount);
     }
   }
 
