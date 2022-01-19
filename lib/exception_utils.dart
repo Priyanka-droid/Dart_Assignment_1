@@ -30,8 +30,8 @@ class ItemQuantityNonNumericException implements Exception {
   static String errMsg() => "Item Quantity can only be numeric";
 }
 
-class NonPositiveQuantityException implements Exception {
-  static String errMsg() => "Item Quantity should be more than 0";
+class NonNaturalQuantityException implements Exception {
+  static String errMsg() => "Item Quantity should be a natural  number";
 }
 
 class ItemTypeNullException implements Exception {

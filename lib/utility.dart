@@ -50,9 +50,9 @@ class Utility {
       print("Enter quantity of item");
       itemQuantityString = stdin.readLineSync()!;
       exceptionFlag =
-          ValidationUtils.priceValidation(itemQuantityString, exceptionFlag);
+          ValidationUtils.quantityValidation(itemQuantityString, exceptionFlag);
     } while (exceptionFlag);
-    double itemQuantity = double.parse(itemQuantityString);
+    int itemQuantity = int.parse(itemQuantityString);
 
     // create an instance of Item with input details
     Item newItem = new Item(

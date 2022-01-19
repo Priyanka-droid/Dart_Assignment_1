@@ -6,7 +6,7 @@ class Item {
   final String itemName;
   final ItemTypes itemType;
   final double itemPrice;
-  final double itemQuantity;
+  final int itemQuantity;
   late double taxAmount, totalPrice;
 
   Item(
